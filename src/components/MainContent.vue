@@ -91,12 +91,14 @@
 		},
 		methods: {
 			getCategories(jokes) {
+				//sort by category
 				let categoryKeys = jokes.reduce((categories, joke) => {
 					categories[joke.category] = categories[joke.category] || [];
 					categories[joke.category].push(joke);
 					return categories;
 				}, []);
 				let categories = [];
+				//remove duplicates
 				for (var key in categoryKeys) {
 					categories.push({
 						name: key,
@@ -104,7 +106,6 @@
 					});
 				}
 				this.categories = categories;
-				console.log("categories ", this.categories);
 			},
 			chooseCategory(category) {
 				this.chosenCategory = category;
@@ -122,7 +123,6 @@
 			},
 			openJoke(joke) {
 				this.modal = true;
-				console.log(joke);
 				this.chosenJoke = joke;
 			},
 			choosePage(page) {
